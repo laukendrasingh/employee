@@ -1,21 +1,12 @@
-# EMPLOYEE MICRO-SERVICE
+### OVERVIEW:
+It's a containerized microservice app developed with spring-boot and java-11, using H2 in-memory DB.
 
 ### CHECKOUT SOURCE-CODE
 ```
 cd employee
-git remote add origin https://git.impressicocrm.com/ezcorp/lnd/employee.git
+git remote add origin https://github.com/laukendrasingh/employee.git
 git fetch --all 
 git checkout main
-```
-
-### JAVA
-```
-open-jdk:17
-```
-
-### BUILD APP
-```
-mvn clean install
 ```
 
 ### RUN H2-DB FROM BROWSER
