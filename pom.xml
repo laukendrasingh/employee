@@ -17,6 +17,7 @@
         <java.version>11</java.version>
     </properties>
 
+    <!--To push the artifact on azure-->
     <distributionManagement>
         <repository>
             <id>employee</id>
