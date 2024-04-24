@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: employee-container
-          image: acrlndqa.azurecr.io/laukendrasingh/employee:1
+          image: acrlndqa.azurecr.io/laukendrasingh/employee:50
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
