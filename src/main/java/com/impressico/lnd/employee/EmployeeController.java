@@ -1,5 +1,7 @@
 package com.impressico.lnd.employee;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/employees")
 public class EmployeeController {
+    private Logger log = LoggerFactory.getLogger(EmployeeApplication.class);
+
     @Autowired
     private EmployeeRepository employeeRepository;
     @Autowired
@@ -24,26 +28,28 @@ public class EmployeeController {
     private String alertUrl;
 
     @GetMapping("/")
-    public ResponseEntity<List<Employee>> getAll() {
+    public ResponseEntity<List<Employee>> findAllEmployee() {
+        log.info("INVOKE: find all employee.");
         return new ResponseEntity<>(employeeRepository.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Employee> getAll(@PathVariable("id") Long id) {
+    public ResponseEntity<Employee> findEmployeeById(@PathVariable("id") Long id) {
+        log.info("INVOKE: find employee by id: {}", id);
         return new ResponseEntity<>(employeeRepository.findById(id).orElse(null), HttpStatus.OK);
     }
 
     @GetMapping("/employeeId/{employeeId}/alerts")
-    public ResponseEntity<String> getEmployeeAlerts(@PathVariable("employeeId") Integer employeeId) {
-        String result;
+    public ResponseEntity<String> findEmployeeAlerts(@PathVariable("employeeId") Integer employeeId) {
+        log.info("INVOKE: find alerts of employee: {}", employeeId);
         String url = alertUrl + "/alerts/employeeId/" + employeeId;
-        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
-        if (response.getStatusCode() == HttpStatus.OK) {
-            result = response.getBody();
-        } else {
-            result = "ERROR: Failed to fetch alerts from url: " + url;
-        }
 
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        try {
+            ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+            return new ResponseEntity<>(response.getBody(), HttpStatus.OK);
+        } catch (Exception ex) {
+            log.error("ERROR: failed to fetch alerts from url: {}", url, ex);
+            return new ResponseEntity<>("ERROR: failed to fetch alerts from url: " + url, HttpStatus.OK);
+        }
     }
 }
