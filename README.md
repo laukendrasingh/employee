@@ -39,3 +39,9 @@ Click on link: http://localhost:8080/h2-console
 2. Add variable with name SPRING_PROFILES_ACTIVE and provide environment specific value
 3. Link variable group with stage to pick the spring profile
 4. NOTE: we are able to set SPRING_PROFILES_ACTIVE and Build.BuildId variable only with 'inline configuration'
+
+### CONFIG-MAP
+wip - Manish
+
+### INGRESS
+wip - Rishu
