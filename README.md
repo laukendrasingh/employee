@@ -42,5 +42,37 @@ Click on link: http://localhost:8080/h2-console
 
 ### CONFIG-MAP: wip
 
-### INGRESS: wip
+### INGRESS:
+1. Create ingress controller by running command
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/cloud/deploy.yaml
+```
+2. Create ingress resource file 'ingress.yaml'
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: msv-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: alert-clusterip
+            port:
+              number: 80
+        path: /alert(/|$)(.*)
+        pathType: ImplementationSpecific
+```
+3. Run below command 
+``` 
+kubectl create -f ingress.yaml 
+```
+4. Run command: Kubectl get services to get ingress IP then you should be able to access your app using http://4.157.77.151:80/alert/alerts/
 
