@@ -101,7 +101,9 @@ spec:
 ```
 3. Run below command 
 ``` 
-kubectl create -f ingress.yaml 
+kubectl create -f ingress.yaml --> First time while creating
+
+kubectl apply -f ingress.yaml  --> To update existing ingress.yaml
 ```
 4. Got to AKS -> Kubernetes resources -> Services and ingresses -> and get the External IP of nginx then you should be able to access your app using http://4.157.77.151:80/alert/alerts/
 
