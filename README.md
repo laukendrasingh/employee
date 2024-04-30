@@ -59,14 +59,14 @@ Click on link: http://localhost:8080/h2-console
 1. Create APIM resource with name: APIM-Lnd-QA
 2. Go to APIs and then 'Add API' in which you need to provide LoadBalancer public URL
 3. You can also upload swagger.json rather than defining manual operations
-4. Employee end-points 
-   5. http://apim-lnd-qa.azure-api.net/employees/employeeId/1/alerts?api-key=5b7c53f5e4504c8eafa59cb0e057cb48
-   6. http://apim-lnd-qa.azure-api.net/employees/1?api-key=5b7c53f5e4504c8eafa59cb0e057cb48
-   7. http://apim-lnd-qa.azure-api.net/employees/?api-key=5b7c53f5e4504c8eafa59cb0e057cb48
-   6. http://apim-lnd-qa.azure-api.net/employees/env?api-key=5b7c53f5e4504c8eafa59cb0e057cb48
-6. Alert end-points
-   7. http://apim-lnd-qa.azure-api.net/alerts/1
-   8. http://apim-lnd-qa.azure-api.net/alerts/
+4. **Employee end-points** 
+5. http://apim-lnd-qa.azure-api.net/employees/employeeId/1/alerts?api-key=5b7c53f5e4504c8eafa59cb0e057cb48
+6. http://apim-lnd-qa.azure-api.net/employees/1?api-key=5b7c53f5e4504c8eafa59cb0e057cb48
+7. http://apim-lnd-qa.azure-api.net/employees/?api-key=5b7c53f5e4504c8eafa59cb0e057cb48
+6. http://apim-lnd-qa.azure-api.net/employees/env?api-key=5b7c53f5e4504c8eafa59cb0e057cb48
+6. **Alert end-points**
+7. http://apim-lnd-qa.azure-api.net/alerts/1
+8. http://apim-lnd-qa.azure-api.net/alerts/
 
 ### ENABLE SUBSCRIPTION ON APIM:
 1. Go to 'Subscription' then Add subscription and copy secondary key
