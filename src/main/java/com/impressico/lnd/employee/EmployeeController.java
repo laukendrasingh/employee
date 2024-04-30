@@ -26,14 +26,16 @@ public class EmployeeController {
 
     @Value("${alert.service.url}")
     private String alertUrl;
-
     @Value("${spring.profiles.active}")
     private String env;
+    @Value("${env.specific.variable}")
+    private String envVariable;
+
 
     @GetMapping("/env")
     public ResponseEntity<String> findEnv() {
-        log.info("INVOKE: find env: {}", env);
-        return new ResponseEntity<>(env, HttpStatus.OK);
+        log.info("INVOKE: find env: {} -> {}", env, envVariable);
+        return new ResponseEntity<>(env + " -> " + envVariable, HttpStatus.OK);
     }
 
     @GetMapping("/")
