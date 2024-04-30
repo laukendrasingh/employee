@@ -69,8 +69,6 @@ Click on link: http://localhost:8080/h2-console
 3. Link variable group with stage to pick the spring profile
 4. NOTE: we are able to set SPRING_PROFILES_ACTIVE and Build.BuildId variable only with 'inline configuration'
 
-### CONFIG-MAP: wip
-
 ### INGRESS:
 1. Create ingress controller by running command
 ```
@@ -104,4 +102,6 @@ spec:
 kubectl create -f ingress.yaml 
 ```
 4. Run command: Kubectl get services to get ingress IP then you should be able to access your app using http://4.157.77.151:80/alert/alerts/
+
+### CONFIG-MAP: wip
 
