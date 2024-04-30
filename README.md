@@ -103,6 +103,6 @@ spec:
 ``` 
 kubectl create -f ingress.yaml 
 ```
-4. Run command: Kubectl get services to get ingress IP then you should be able to access your app using http://4.157.77.151:80/alert/alerts/
+4. Got to AKS -> Kubernetes resources -> Services and ingresses -> and get the External IP of nginx then you should be able to access your app using http://4.157.77.151:80/alert/alerts/
 
 ### CONFIG-MAP: wip
