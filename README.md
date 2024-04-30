@@ -89,22 +89,32 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - http:
-      paths:
-      - backend:
-          service:
-            name: alert-clusterip
-            port:
-              number: 80
-        path: /alert(/|$)(.*)
-        pathType: ImplementationSpecific
+    - http:
+        paths:
+          - backend:
+              service:
+                name: alert-clusterip
+                port:
+                  number: 80
+            path: /alert(/|$)(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: employee-clusterip
+                port:
+                  number: 80
+            path: /employee(/|$)(.*)
+            pathType: ImplementationSpecific
 ```
 3. Run below command 
 ``` 
 kubectl create -f ingress.yaml --> First time while creating
 
 kubectl apply -f ingress.yaml  --> To update existing ingress.yaml
+
+kubectl describe ing           --> To see the ingress.yaml changes applied or not
 ```
-4. Got to AKS -> Kubernetes resources -> Services and ingresses -> and get the External IP of nginx then you should be able to access your app using http://4.157.77.151:80/alert/alerts/
+4. Got to AKS -> Kubernetes resources -> Services and ingresses -> and get the External IP of nginx then you should be able to access your app using 
+http://4.157.77.151:80/alert/alerts/ and http://4.157.77.151/employee/employees/
 
 ### CONFIG-MAP: wip
