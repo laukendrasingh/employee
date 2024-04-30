@@ -1,6 +1,7 @@
 ### OVERVIEW:
-It's a containerized microservice app developed with spring-boot and java-11, using H2 in-memory DB.
-See: https://laukendrasingh.github.io/employee/
+It's a containerized microservice app developed with spring-boot and java-11, using H2 in-memory DB. 
+
+SEE: https://laukendrasingh.github.io/employee/
 
 ### CHECKOUT SOURCE-CODE:
 ```
@@ -105,4 +106,3 @@ kubectl create -f ingress.yaml
 4. Run command: Kubectl get services to get ingress IP then you should be able to access your app using http://4.157.77.151:80/alert/alerts/
 
 ### CONFIG-MAP: wip
-
