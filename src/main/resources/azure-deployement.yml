@@ -14,13 +14,13 @@ spec:
     spec:
       containers:
         - name: employee-container
-          image: acrlndqa.azurecr.io/laukendrasingh/employee:60
+          image: acrlndqa.azurecr.io/laukendrasingh/employee:$(Build.BuildId)
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
             - name: SPRING_PROFILES_ACTIVE
-              value: qa
+              value: $(SPRING_PROFILES_ACTIVE)
 
 ---
 apiVersion: v1
