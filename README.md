@@ -17,6 +17,35 @@ Click on link: http://localhost:8080/h2-console
 * [Get employee by id: 1](http://localhost:8080/employees/1)
 * [Get employee 1 alerts](http://localhost:8080/employees/employeeId/1/alerts)
 
+### BUILD & RUN DOCKER IMAGE AT LOCAL:
+1. Install docker
+2. Start docker using docker desktop
+3. Got to IntelliJ project and set docker path:  export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
+4. Build project: mvn clean install
+5. Build docker image:  sudo docker build -t employee .
+6. Run docker image: docker run -p 8080:8080 employee
+7. Run from browser: http://localhost:8080/employees/
+
+### CREATE RESOURCES AT AZURE PORTAL:
+1. Resource group: RG-LnD-QA
+2. ACR: To store docker images: ACRLnDQA
+3. AKS: To run images in cluster: AKS-LnD-QA
+
+### CREATE BUILD PIPELINE ON AZURE DEV PORTAL:
+1. Git source: To checkout source code
+2. Agent job: Ubuntu Latest. It's a VM on which thse steps executes
+3. Maven pom.xml: To build java code
+4. Build an image: with azure agent-Ubuntu Latest
+5. Push an image: Into ACR
+6. Push artifact
+7. Triggers: Enable continuous integration on branch 'main'
+
+### CREATE RELEASE PIPELINE ON AZURE:
+1. Select artifact
+2. Agent job: Ubuntu Latest
+3. kubectl login: Login into AKS
+4. kubectl apply: Fetch image from ACR and run on AKS
+
 ### APP-INSIGHTS:
 1. Create Application Insights 'AI-Lnd-QA' then you will get 'Instrumentation Key' on Overview page
 2. Add logback-spring.xml and define 'ApplicationInsightsAppender' -> It requires to push log message
