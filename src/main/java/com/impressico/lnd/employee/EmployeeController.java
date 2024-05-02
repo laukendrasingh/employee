@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -23,7 +25,6 @@ public class EmployeeController {
     private EmployeeRepository employeeRepository;
     @Autowired
     private RestTemplate restTemplate;
-
     @Value("${alert.service.url}")
     private String alertUrl;
     @Value("${spring.profiles.active}")
@@ -31,7 +32,10 @@ public class EmployeeController {
     @Value("${env.specific.variable}")
     private String envVariable;
 
-
+    @PostMapping("/add")
+    public Employee createEmployee(@RequestBody Employee employee) {
+        return employeeRepository.save(employee);
+    }
     @GetMapping("/env")
     public ResponseEntity<String> findEnv() {
         log.info("INVOKE: find env: {} -> {}", env, envVariable);
