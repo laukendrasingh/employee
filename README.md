@@ -64,6 +64,12 @@ Click on link: http://localhost:8080/h2-console
 6. http://apim-lnd-qa.azure-api.net/employees/1?api-key=5b7c53f5e4504c8eafa59cb0e057cb48
 7. http://apim-lnd-qa.azure-api.net/employees/?api-key=5b7c53f5e4504c8eafa59cb0e057cb48
 6. http://apim-lnd-qa.azure-api.net/employees/env?api-key=5b7c53f5e4504c8eafa59cb0e057cb48
+7. ADD EMPLOYEE: curl --location 'http://52.234.243.1:80/employees/add' \
+--header 'Content-Type: application/json' \
+--data '{
+    "id":5,
+    "name":"Shivendra"
+}'
 6. **Alert end-points**
 7. http://apim-lnd-qa.azure-api.net/alerts/1
 8. http://apim-lnd-qa.azure-api.net/alerts/
