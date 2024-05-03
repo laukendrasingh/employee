@@ -130,4 +130,23 @@ kubectl describe ing           --> To see the ingress.yaml changes applied or no
 4. Got to AKS -> Kubernetes resources -> Services and ingresses -> and get the External IP of nginx then you should be able to access your app using 
 http://4.157.77.151:80/alert/alerts/ and http://4.157.77.151/employee/employees/
 
-### CONFIG-MAP: wip
+### AZURE FUNCTIONS:
+1. Got to azure -> Function App -> Create -> Runtime Stack: .NET, Version: 6 (LTS) in-process model, Operating System: Windows
+2. Got to your created Function App -> Overview -> Create -> Select a Template -> and follow the steps to create and test run the function
+
+### CONFIG-MAP:
+1. Create a file alert-config-map.yml in alert microservice inside resource folder
+2. Put the data as key & value pair which you want in config-map
+3. Define the env in azure-deployment.yml file for your keys which you want to read from config-map
+4. Push your changes and run the build pipeline
+5. Execute below commands then run release pipeline and then you should be able to access config-map values from API: http://172.212.127.98:80/alerts/configMap
+```
+kubectl get cm                          —> Get existing config maps
+Kubectl delete cm alert-config-map      —> Delete config map by name
+kubectl apply -f alert-config-map.yml   —> Create config map
+kubectl describe cm alert-config-map    —> To see values in config map
+```
+
+### SQL DB: Done by Panwan
+
+### KEY-VAULT: wip Rishu
