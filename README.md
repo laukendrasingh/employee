@@ -35,7 +35,7 @@ Click on link: http://localhost:8080/h2-console
 
 ### CREATE BUILD PIPELINE ON AZURE DEV PORTAL:
 1. Git source: To checkout source code
-2. Agent job: Ubuntu Latest. It's a VM on which thse steps executes
+2. Agent job: Ubuntu Latest. It's a VM on which these steps executes
 3. Maven pom.xml: To build java code
 4. Build an image: with azure agent-Ubuntu Latest
 5. Push an image: Into ACR
@@ -45,7 +45,7 @@ Click on link: http://localhost:8080/h2-console
 ### CREATE RELEASE PIPELINE ON AZURE:
 1. Select artifact
 2. Agent job: Ubuntu Latest
-3. kubectl login: Login into AKS
+3. kubectl login: Login into AKS -> Not required
 4. kubectl apply: Fetch image from ACR and run on AKS
 
 ### APP-INSIGHTS:
